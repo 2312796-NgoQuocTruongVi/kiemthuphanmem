@@ -34,17 +34,17 @@ class YummyApp:
         """Validate and apply a promotion code."""
         if self.network_status == "offline":
             raise ConnectionError(
-                "No network connection to validate the code."
+                "Khong co ket noi mang de xac thuc ma."
             )
 
         if code not in PROMO_CODES:
-            raise ValueError("Invalid promotion code.")
+            raise ValueError("Ma khuyen mai khong hop le.")
 
         promo = PROMO_CODES[code]
         if self.os_version < promo["min_os_version"]:
             raise ValueError(
-                "This code requires OS version "
-                f"{promo['min_os_version']} or later."
+                f"Ma nay yeu cau HDH phien ban "
+                f"{promo['min_os_version']} tro len."
             )
 
         return total * (1 - promo["discount"])
@@ -56,4 +56,4 @@ class YummyApp:
             location_key = f"{lat},{lon}"
             return RESTAURANTS_BY_LOCATION.get(location_key, [])
         except gps_service.GPSSignalLostError:
-            return "Unable to determine location."
+            return "Khong the xac dinh vi tri."

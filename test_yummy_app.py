@@ -81,7 +81,7 @@ class TestHardLevel(unittest.TestCase):
     def test_nearby_restaurants_when_gps_signal_is_lost(self, get_location):
         app = YummyApp()
         self.assertEqual(
-            app.get_nearby_restaurants(), "Unable to determine location."
+            app.get_nearby_restaurants(), "Khong the xac dinh vi tri."
         )
         get_location.assert_called_once_with()
 
